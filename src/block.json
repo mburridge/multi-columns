@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "newspaper-columns-block/newspaper-columns-block",
+  "version": "0.1.0",
+  "title": "Newspaper Columns Block",
+  "category": "design",
+  "icon": "columns",
+  "description": "Implements a block that allows text to wrap across 2 or more columns - like a newspaper",
+  "keywords": [
+    "newspaper",
+    "columns",
+    "flow",
+    "text"
+  ],
+  "supports": {
+    "html": false
+  },
+  "textdomain": "newspaper-columns-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}
