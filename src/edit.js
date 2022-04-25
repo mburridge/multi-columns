@@ -45,7 +45,7 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ content: newContent });
 	};
 
-	// console.table(attributes);
+	console.table(attributes);
 
 	const blockProps = useBlockProps();
 	const ALLOWED_BLOCKS = ["core/image", "core/paragraph", "core/heading"];
@@ -54,7 +54,8 @@ export default function Edit({ attributes, setAttributes }) {
 		["core/paragraph", { placeholder: "Add text here..." }],
 		["core/paragraph", { placeholder: "Add more text here..." }],
 	];
-	const { backgroundColor, textColor, columnCount, columnWidth } = attributes;
+	const { backgroundColor, textColor, columnCount, columnWidth, columnGap } =
+		attributes;
 
 	const onChangeBackgroundColor = (newBackgroundColor) => {
 		setAttributes({ backgroundColor: newBackgroundColor });
@@ -71,6 +72,11 @@ export default function Edit({ attributes, setAttributes }) {
 		newColumnWidth = newColumnWidth > 500 ? 500 : newColumnWidth;
 		newColumnWidth = newColumnWidth < 120 ? 120 : newColumnWidth;
 		setAttributes({ columnWidth: Number(newColumnWidth) });
+	};
+	const onChangeColumnGap = (newColumnGap) => {
+		newColumnGap = newColumnGap > 100 ? 100 : newColumnGap;
+		newColumnGap = newColumnGap < 10 ? 10 : newColumnGap;
+		setAttributes({ columnGap: Number(newColumnGap) });
 	};
 
 	return (
@@ -118,6 +124,17 @@ export default function Edit({ attributes, setAttributes }) {
 							/>
 						</fieldset>
 					</PanelRow>
+					<PanelRow>
+						<fieldset>
+							<NumberControl
+								label={__("Column gap", "newspaper-columns-block")}
+								onChange={onChangeColumnGap}
+								value={columnGap}
+								min="10"
+								max="100"
+							/>
+						</fieldset>
+					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
 			<div
@@ -127,6 +144,7 @@ export default function Edit({ attributes, setAttributes }) {
 					color: textColor,
 					columnCount: columnCount,
 					columnWidth: columnWidth,
+					columnGap: columnGap,
 				}}
 			>
 				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={NPC_TEMPLATE} />

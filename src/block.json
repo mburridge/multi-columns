@@ -14,7 +14,12 @@
     "text"
   ],
   "supports": {
-    "html": false
+    "html": false,
+    "spacing_how_does_this_work": {
+      "also": "how to add align wide?",
+      "margin": true,
+      "padding": true
+    }
   },
   "textdomain": "newspaper-columns-block",
   "editorScript": "file:./index.js",
@@ -40,6 +45,10 @@
     "columnWidth": {
       "type": "integer",
       "default": 200
+    },
+    "columnGap": {
+      "type": "integer",
+      "default": 40
     }
   }
 }
