@@ -11,7 +11,7 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from "@wordpress/block-editor";
+import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,13 +29,16 @@ import "./editor.scss";
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
+	const onChangeContent = (newContent) => {
+		setAttributes({ content: newContent });
+	};
+
+	const blockProps = useBlockProps();
+
 	return (
-		<p {...useBlockProps()}>
-			{__(
-				"Newspaper Columns Block – hello from the editor!",
-				"newspaper-columns-block"
-			)}
-		</p>
+		<div {...blockProps}>
+			<InnerBlocks />
+		</div>
 	);
 }
