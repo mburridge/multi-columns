@@ -49,6 +49,14 @@
     "columnGap": {
       "type": "integer",
       "default": 40
+    },
+    "columnRuleColor": {
+      "type": "string",
+      "default": "#b8b8b8"
+    },
+    "columnRuleWidth": {
+      "type": "integer",
+      "default": 1
     }
   }
 }

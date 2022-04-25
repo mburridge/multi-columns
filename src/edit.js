@@ -45,7 +45,7 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ content: newContent });
 	};
 
-	console.table(attributes);
+	// console.table(attributes);
 
 	const blockProps = useBlockProps();
 	const ALLOWED_BLOCKS = ["core/image", "core/paragraph", "core/heading"];
@@ -54,8 +54,15 @@ export default function Edit({ attributes, setAttributes }) {
 		["core/paragraph", { placeholder: "Add text here..." }],
 		["core/paragraph", { placeholder: "Add more text here..." }],
 	];
-	const { backgroundColor, textColor, columnCount, columnWidth, columnGap } =
-		attributes;
+	const {
+		backgroundColor,
+		textColor,
+		columnCount,
+		columnWidth,
+		columnGap,
+		columnRuleColor,
+		columnRuleWidth,
+	} = attributes;
 
 	const onChangeBackgroundColor = (newBackgroundColor) => {
 		setAttributes({ backgroundColor: newBackgroundColor });
@@ -78,6 +85,14 @@ export default function Edit({ attributes, setAttributes }) {
 		newColumnGap = newColumnGap < 10 ? 10 : newColumnGap;
 		setAttributes({ columnGap: Number(newColumnGap) });
 	};
+	const onChangeColumnRuleColor = (newColumnRuleColor) => {
+		setAttributes({ columnRuleColor: newColumnRuleColor });
+	};
+	const onChangeColumnRuleWidth = (newColumnRuleWidth) => {
+		newColumnRuleWidth = newColumnRuleWidth > 8 ? 8 : newColumnRuleWidth;
+		newColumnRuleWidth = newColumnRuleWidth < 1 ? 1 : newColumnRuleWidth;
+		setAttributes({ columnRuleWidth: Number(newColumnRuleWidth) });
+	};
 
 	return (
 		<>
@@ -98,6 +113,7 @@ export default function Edit({ attributes, setAttributes }) {
 						},
 					]}
 				/>
+
 				<PanelBody
 					title={__("Column Settings", "newspaper-columns-block")}
 					initialOpen={true}
@@ -105,7 +121,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<NumberControl
-								label={__("Number of columns", "newspaper-columns-block")}
+								label={__("No. of columns", "newspaper-columns-block")}
 								onChange={onChangeColumnCount}
 								value={columnCount}
 								min="2"
@@ -116,7 +132,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<NumberControl
-								label={__("Column width", "newspaper-columns-block")}
+								label={__("Width", "newspaper-columns-block")}
 								onChange={onChangeColumnWidth}
 								value={columnWidth}
 								min="120"
@@ -127,11 +143,39 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<NumberControl
-								label={__("Column gap", "newspaper-columns-block")}
+								label={__("Gap", "newspaper-columns-block")}
 								onChange={onChangeColumnGap}
 								value={columnGap}
 								min="10"
 								max="100"
+							/>
+						</fieldset>
+					</PanelRow>
+				</PanelBody>
+
+				<PanelBody
+					title={__("Column Separator", "newspaper-columns-block")}
+					initialOpen={false}
+				>
+					<PanelColorSettings
+						title={__("Separator colour", "newspaper-columns-block")}
+						initialOpen={false}
+						colorSettings={[
+							{
+								value: columnRuleColor,
+								onChange: onChangeColumnRuleColor,
+								label: __("Separator colour", "newspaper-columns-block"),
+							},
+						]}
+					/>
+					<PanelRow>
+						<fieldset>
+							<NumberControl
+								label={__("Separator width", "newspaper-columns-block")}
+								onChange={onChangeColumnRuleWidth}
+								value={columnRuleWidth}
+								min="1"
+								max="8"
 							/>
 						</fieldset>
 					</PanelRow>
@@ -145,6 +189,8 @@ export default function Edit({ attributes, setAttributes }) {
 					columnCount: columnCount,
 					columnWidth: columnWidth,
 					columnGap: columnGap,
+					columnRuleColor: columnRuleColor,
+					columnRuleWidth: columnRuleWidth,
 				}}
 			>
 				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={NPC_TEMPLATE} />
