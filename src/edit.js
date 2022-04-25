@@ -63,6 +63,8 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ textColor: newTextColor });
 	};
 	const onChangeColumnCount = (newColumnCount) => {
+		newColumnCount = newColumnCount > 6 ? 6 : newColumnCount;
+		newColumnCount = newColumnCount < 2 ? 2 : newColumnCount;
 		setAttributes({ columnCount: Number(newColumnCount) });
 	};
 
