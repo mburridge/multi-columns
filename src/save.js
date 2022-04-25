@@ -24,9 +24,17 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
  */
 export default function save({ attributes }) {
 	const blockProps = useBlockProps.save();
+	const { backgroundColor, textColor, columnCount } = attributes;
 
 	return (
-		<div {...blockProps}>
+		<div
+			{...blockProps}
+			style={{
+				backgroundColor: backgroundColor,
+				color: textColor,
+				columnCount: columnCount,
+			}}
+		>
 			<InnerBlocks.Content />
 		</div>
 	);

@@ -11,7 +11,18 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
+import {
+	useBlockProps,
+	InnerBlocks,
+	InspectorControls,
+	PanelColorSettings,
+} from "@wordpress/block-editor";
+
+import {
+	PanelBody,
+	PanelRow,
+	__experimentalNumberControl as NumberControl,
+} from "@wordpress/components";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -34,11 +45,73 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ content: newContent });
 	};
 
+	// console.table(attributes);
+
 	const blockProps = useBlockProps();
+	const ALLOWED_BLOCKS = ["core/image", "core/paragraph", "core/heading"];
+	const NPC_TEMPLATE = [
+		["core/heading", { placeholder: "Add a title..." }],
+		["core/paragraph", { placeholder: "Add text here..." }],
+		["core/paragraph", { placeholder: "Add more text here..." }],
+	];
+	const { backgroundColor, textColor, columnCount } = attributes;
+
+	const onChangeBackgroundColor = (newBackgroundColor) => {
+		setAttributes({ backgroundColor: newBackgroundColor });
+	};
+	const onChangeTextColor = (newTextColor) => {
+		setAttributes({ textColor: newTextColor });
+	};
+	const onChangeColumnCount = (newColumnCount) => {
+		setAttributes({ columnCount: Number(newColumnCount) });
+	};
 
 	return (
-		<div {...blockProps}>
-			<InnerBlocks />
-		</div>
+		<>
+			<InspectorControls>
+				<PanelColorSettings
+					title={__("Colour settings", "newspaper-columns-block")}
+					initialOpen={false}
+					colorSettings={[
+						{
+							value: textColor,
+							onChange: onChangeTextColor,
+							label: __("Text colour", "newspaper-columns-block"),
+						},
+						{
+							value: backgroundColor,
+							onChange: onChangeBackgroundColor,
+							label: __("Background colour", "newspaper-columns-block"),
+						},
+					]}
+				/>
+				<PanelBody
+					title={__("Column Settings", "newspaper-columns-block")}
+					initialOpen={true}
+				>
+					<PanelRow>
+						<fieldset>
+							<NumberControl
+								label={__("Number of columns", "newspaper-columns-block")}
+								onChange={onChangeColumnCount}
+								value={columnCount}
+								min="2"
+								max="6"
+							/>
+						</fieldset>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
+			<div
+				{...blockProps}
+				style={{
+					backgroundColor: backgroundColor,
+					color: textColor,
+					columnCount: columnCount,
+				}}
+			>
+				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={NPC_TEMPLATE} />
+			</div>
+		</>
 	);
 }

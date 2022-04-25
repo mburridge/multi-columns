@@ -14,7 +14,6 @@
 	column-width: 200px;
 	column-gap: 2.5rem;
 	column-rule: 1px solid #b8b8b8;
-	/* 	overflow: hidden; */
 	column-fill: auto;
 }
 
@@ -23,17 +22,16 @@
 }
 
 .wp-block-newspaper-columns-block-newspaper-columns-block h2 {
-	column-span: all;
+	// column-span: all;
 	margin: 0 0 1rem;
 }
 
-.wp-block-newspaper-columns-block-newspaper-columns-block
-	p:first-of-type:first-letter {
-	color: #903;
-	float: left;
-	font-size: 60px;
-	line-height: 50px;
-	padding-top: 4px;
-	padding-right: 8px;
-	// padding-left: 2px;
-}
+// .wp-block-newspaper-columns-block-newspaper-columns-block
+// 	p:first-of-type:first-letter {
+// 	color: #903;
+// 	float: left;
+// 	font-size: 60px;
+// 	line-height: 50px;
+// 	padding-top: 4px;
+// 	padding-right: 8px;
+// }
