@@ -54,7 +54,7 @@ export default function Edit({ attributes, setAttributes }) {
 		["core/paragraph", { placeholder: "Add text here..." }],
 		["core/paragraph", { placeholder: "Add more text here..." }],
 	];
-	const { backgroundColor, textColor, columnCount } = attributes;
+	const { backgroundColor, textColor, columnCount, columnWidth } = attributes;
 
 	const onChangeBackgroundColor = (newBackgroundColor) => {
 		setAttributes({ backgroundColor: newBackgroundColor });
@@ -66,6 +66,11 @@ export default function Edit({ attributes, setAttributes }) {
 		newColumnCount = newColumnCount > 6 ? 6 : newColumnCount;
 		newColumnCount = newColumnCount < 2 ? 2 : newColumnCount;
 		setAttributes({ columnCount: Number(newColumnCount) });
+	};
+	const onChangeColumnWidth = (newColumnWidth) => {
+		newColumnWidth = newColumnWidth > 500 ? 500 : newColumnWidth;
+		newColumnWidth = newColumnWidth < 120 ? 120 : newColumnWidth;
+		setAttributes({ columnWidth: Number(newColumnWidth) });
 	};
 
 	return (
@@ -102,6 +107,17 @@ export default function Edit({ attributes, setAttributes }) {
 							/>
 						</fieldset>
 					</PanelRow>
+					<PanelRow>
+						<fieldset>
+							<NumberControl
+								label={__("Column width", "newspaper-columns-block")}
+								onChange={onChangeColumnWidth}
+								value={columnWidth}
+								min="120"
+								max="500"
+							/>
+						</fieldset>
+					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
 			<div
@@ -110,6 +126,7 @@ export default function Edit({ attributes, setAttributes }) {
 					backgroundColor: backgroundColor,
 					color: textColor,
 					columnCount: columnCount,
+					columnWidth: columnWidth,
 				}}
 			>
 				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={NPC_TEMPLATE} />

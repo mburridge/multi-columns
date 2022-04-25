@@ -36,6 +36,10 @@
     "columnCount": {
       "type": "integer",
       "default": 4
+    },
+    "columnWidth": {
+      "type": "integer",
+      "default": 200
     }
   }
 }
