@@ -88,7 +88,6 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ columnGap: Number(newColumnGap) });
 	};
 	const onChangeColumnRuleStyle = (newColumnRuleStyle) => {
-		console.log(newColumnRuleStyle);
 		setAttributes({ columnRuleStyle: newColumnRuleStyle });
 	};
 	const onChangeColumnRuleWidth = (newColumnRuleWidth) => {

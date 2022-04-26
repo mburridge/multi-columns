@@ -25,6 +25,17 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
+  "styles": [
+    {
+      "name": "default",
+      "label": "Default",
+      "isDefault": true
+    },
+    {
+      "name": "drop-cap",
+      "label": "Dropped Initial Capital"
+    }
+  ],
   "attributes": {
     "content": {
       "_comment": "Is this really needed? It seems to work fine without it",

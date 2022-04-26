@@ -6,28 +6,23 @@
  */
 
 .wp-block-newspaper-columns-block-newspaper-columns-block {
-	background-color: #f2f0e5;
+	background-color: #fbf9f4;
 	color: #000;
 	padding: 20px;
 	column-fill: auto;
 	/* 	overflow: hidden; */
 }
 
+.wp-block-newspaper-columns-block-newspaper-columns-block.is-style-drop-cap
+	p:first-of-type:first-letter {
+	// color: #903;
+	float: left;
+	font-size: 60px;
+	line-height: 50px;
+	padding-top: 4px;
+	padding-right: 8px;
+}
+
 .wp-block-newspaper-columns-block-newspaper-columns-block p {
 	margin-top: 0;
 }
-
-.wp-block-newspaper-columns-block-newspaper-columns-block h2 {
-	// column-span: all;
-	margin: 0 0 1rem;
-}
-
-// .wp-block-newspaper-columns-block-newspaper-columns-block
-// 	p:first-of-type:first-letter {
-// 	color: #903;
-// 	float: left;
-// 	font-size: 60px;
-// 	line-height: 50px;
-// 	padding-top: 4px;
-// 	padding-right: 8px;
-// }
