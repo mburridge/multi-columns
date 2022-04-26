@@ -22,6 +22,7 @@ import {
 	PanelBody,
 	PanelRow,
 	__experimentalNumberControl as NumberControl,
+	SelectControl,
 } from "@wordpress/components";
 
 /**
@@ -60,8 +61,9 @@ export default function Edit({ attributes, setAttributes }) {
 		columnCount,
 		columnWidth,
 		columnGap,
-		columnRuleColor,
+		columnRuleStyle,
 		columnRuleWidth,
+		columnRuleColor,
 	} = attributes;
 
 	const onChangeBackgroundColor = (newBackgroundColor) => {
@@ -85,13 +87,17 @@ export default function Edit({ attributes, setAttributes }) {
 		newColumnGap = newColumnGap < 10 ? 10 : newColumnGap;
 		setAttributes({ columnGap: Number(newColumnGap) });
 	};
-	const onChangeColumnRuleColor = (newColumnRuleColor) => {
-		setAttributes({ columnRuleColor: newColumnRuleColor });
+	const onChangeColumnRuleStyle = (newColumnRuleStyle) => {
+		console.log(newColumnRuleStyle);
+		setAttributes({ columnRuleStyle: newColumnRuleStyle });
 	};
 	const onChangeColumnRuleWidth = (newColumnRuleWidth) => {
 		newColumnRuleWidth = newColumnRuleWidth > 8 ? 8 : newColumnRuleWidth;
 		newColumnRuleWidth = newColumnRuleWidth < 1 ? 1 : newColumnRuleWidth;
 		setAttributes({ columnRuleWidth: Number(newColumnRuleWidth) });
+	};
+	const onChangeColumnRuleColor = (newColumnRuleColor) => {
+		setAttributes({ columnRuleColor: newColumnRuleColor });
 	};
 
 	return (
@@ -157,27 +163,48 @@ export default function Edit({ attributes, setAttributes }) {
 					title={__("Column Separator", "newspaper-columns-block")}
 					initialOpen={false}
 				>
-					<PanelColorSettings
-						title={__("Separator colour", "newspaper-columns-block")}
-						initialOpen={false}
-						colorSettings={[
-							{
-								value: columnRuleColor,
-								onChange: onChangeColumnRuleColor,
-								label: __("Separator colour", "newspaper-columns-block"),
-							},
-						]}
-					/>
+					<PanelRow>
+						<fieldset>
+							<SelectControl
+								label={__("Style", "newspaper-columns-block")}
+								onChange={onChangeColumnRuleStyle}
+								value={columnRuleStyle}
+								options={[
+									{ label: "None", value: "none" },
+									{ label: "Dotted", value: "dotted" },
+									{ label: "Dashed", value: "dashed" },
+									{ label: "Solid", value: "solid" },
+									{ label: "Double", value: "double" },
+									{ label: "Groove", value: "groove" },
+									{ label: "Ridge", value: "ridge" },
+								]}
+							/>
+						</fieldset>
+					</PanelRow>
 					<PanelRow>
 						<fieldset>
 							<NumberControl
-								label={__("Separator width", "newspaper-columns-block")}
+								label={__("Width", "newspaper-columns-block")}
 								onChange={onChangeColumnRuleWidth}
 								value={columnRuleWidth}
 								min="1"
 								max="8"
+								width="200px"
 							/>
 						</fieldset>
+					</PanelRow>
+					<PanelRow>
+						<PanelColorSettings
+							title={__("Colour", "newspaper-columns-block")}
+							initialOpen={false}
+							colorSettings={[
+								{
+									value: columnRuleColor,
+									onChange: onChangeColumnRuleColor,
+									label: __("Separator colour", "newspaper-columns-block"),
+								},
+							]}
+						/>
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
@@ -189,8 +216,9 @@ export default function Edit({ attributes, setAttributes }) {
 					columnCount: columnCount,
 					columnWidth: columnWidth,
 					columnGap: columnGap,
-					columnRuleColor: columnRuleColor,
+					columnRuleStyle: columnRuleStyle,
 					columnRuleWidth: columnRuleWidth,
+					columnRuleColor: columnRuleColor,
 				}}
 			>
 				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={NPC_TEMPLATE} />

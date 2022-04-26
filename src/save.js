@@ -30,8 +30,9 @@ export default function save({ attributes }) {
 		columnCount,
 		columnWidth,
 		columnGap,
-		columnRuleColor,
+		columnRuleStyle,
 		columnRuleWidth,
+		columnRuleColor,
 	} = attributes;
 
 	return (
@@ -43,8 +44,9 @@ export default function save({ attributes }) {
 				columnCount: columnCount,
 				columnWidth: columnWidth,
 				columnGap: columnGap,
-				columnRuleColor: columnRuleColor,
+				columnRuleStyle: columnRuleStyle,
 				columnRuleWidth: columnRuleWidth,
+				columnRuleColor: columnRuleColor,
 			}}
 		>
 			<InnerBlocks.Content />

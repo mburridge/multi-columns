@@ -57,6 +57,10 @@
     "columnRuleWidth": {
       "type": "integer",
       "default": 1
+    },
+    "columnRuleStyle": {
+      "type": "string",
+      "default": "solid"
     }
   }
 }
