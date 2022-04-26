@@ -11,18 +11,15 @@
 	padding: 20px;
 	column-fill: auto;
 	/* 	overflow: hidden; */
-}
 
-.wp-block-newspaper-columns-block-newspaper-columns-block.is-style-drop-cap
-	p:first-of-type:first-letter {
-	// color: #903;
-	float: left;
-	font-size: 60px;
-	line-height: 50px;
-	padding-top: 4px;
-	padding-right: 8px;
-}
-
-.wp-block-newspaper-columns-block-newspaper-columns-block p {
-	margin-top: 0;
+	&.is-style-drop-cap {
+		p:first-of-type:first-letter {
+			// color: #903;
+			float: left;
+			font-size: 60px;
+			line-height: 50px;
+			padding-top: 4px;
+			padding-right: 8px;
+		}
+	}
 }
