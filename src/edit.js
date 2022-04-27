@@ -23,6 +23,7 @@ import {
 	PanelRow,
 	__experimentalNumberControl as NumberControl,
 	SelectControl,
+	__experimentalBoxControl as BoxControl,
 } from "@wordpress/components";
 
 /**
@@ -58,6 +59,7 @@ export default function Edit({ attributes, setAttributes }) {
 	const {
 		backgroundColor,
 		textColor,
+		padding,
 		columnCount,
 		columnWidth,
 		columnGap,
@@ -71,6 +73,10 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 	const onChangeTextColor = (newTextColor) => {
 		setAttributes({ textColor: newTextColor });
+	};
+	const onChangePadding = (newPadding) => {
+		console.table(newPadding);
+		setAttributes({ padding: newPadding });
 	};
 	const onChangeColumnCount = (newColumnCount) => {
 		newColumnCount = newColumnCount > 6 ? 6 : newColumnCount;
@@ -120,6 +126,17 @@ export default function Edit({ attributes, setAttributes }) {
 				/>
 
 				<PanelBody
+					titel={__("Dimensions", "newspaper-columns-block")}
+					initialOpen={true}
+				>
+					<BoxControl
+						label="Padding"
+						values={padding}
+						onChange={onChangePadding}
+					/>
+				</PanelBody>
+
+				<PanelBody
 					title={__("Column Settings", "newspaper-columns-block")}
 					initialOpen={true}
 				>
@@ -127,6 +144,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<fieldset>
 							<NumberControl
 								label={__("No. of columns", "newspaper-columns-block")}
+								labelPosition="side"
 								onChange={onChangeColumnCount}
 								value={columnCount}
 								min="2"
@@ -138,6 +156,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<fieldset>
 							<NumberControl
 								label={__("Width", "newspaper-columns-block")}
+								labelPosition="side"
 								onChange={onChangeColumnWidth}
 								value={columnWidth}
 								min="120"
@@ -149,6 +168,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<fieldset>
 							<NumberControl
 								label={__("Gap", "newspaper-columns-block")}
+								labelPosition="side"
 								onChange={onChangeColumnGap}
 								value={columnGap}
 								min="10"
@@ -165,7 +185,8 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<SelectControl
-								label={__("Style", "newspaper-columns-block")}
+								label={__("Separator Style", "newspaper-columns-block")}
+								labelPosition="side"
 								onChange={onChangeColumnRuleStyle}
 								value={columnRuleStyle}
 								options={[
@@ -184,6 +205,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<fieldset>
 							<NumberControl
 								label={__("Width", "newspaper-columns-block")}
+								labelPosition="side"
 								onChange={onChangeColumnRuleWidth}
 								value={columnRuleWidth}
 								min="1"
@@ -212,6 +234,10 @@ export default function Edit({ attributes, setAttributes }) {
 				style={{
 					backgroundColor: backgroundColor,
 					color: textColor,
+					paddingTop: padding.top,
+					paddingRight: padding.right,
+					paddingBottom: padding.bottom,
+					paddingLeft: padding.left,
 					columnCount: columnCount,
 					columnWidth: columnWidth,
 					columnGap: columnGap,

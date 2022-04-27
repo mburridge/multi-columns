@@ -27,6 +27,7 @@ export default function save({ attributes }) {
 	const {
 		backgroundColor,
 		textColor,
+		padding,
 		columnCount,
 		columnWidth,
 		columnGap,
@@ -41,6 +42,10 @@ export default function save({ attributes }) {
 			style={{
 				backgroundColor: backgroundColor,
 				color: textColor,
+				paddingTop: padding.top,
+				paddingRight: padding.right,
+				paddingBottom: padding.bottom,
+				paddingLeft: padding.left,
 				columnCount: columnCount,
 				columnWidth: columnWidth,
 				columnGap: columnGap,

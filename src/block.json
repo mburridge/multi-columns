@@ -38,7 +38,6 @@
   ],
   "attributes": {
     "content": {
-      "_comment": "Is this really needed? It seems to work fine without it",
       "type": "string",
       "source": "html",
       "selector": "div"
@@ -48,6 +47,15 @@
     },
     "textColor": {
       "type": "string"
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "20px",
+        "left": "20px",
+        "right": "20px",
+        "bottom": "20px"
+      }
     },
     "columnCount": {
       "type": "integer",
