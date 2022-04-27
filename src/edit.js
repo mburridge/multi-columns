@@ -126,17 +126,6 @@ export default function Edit({ attributes, setAttributes }) {
 				/>
 
 				<PanelBody
-					titel={__("Dimensions", "newspaper-columns-block")}
-					initialOpen={true}
-				>
-					<BoxControl
-						label="Padding"
-						values={padding}
-						onChange={onChangePadding}
-					/>
-				</PanelBody>
-
-				<PanelBody
 					title={__("Column Settings", "newspaper-columns-block")}
 					initialOpen={true}
 				>
@@ -227,6 +216,23 @@ export default function Edit({ attributes, setAttributes }) {
 							]}
 						/>
 					</PanelRow>
+				</PanelBody>
+
+				<PanelBody
+					title={__("Dimensions", "newspaper-columns-block")}
+					initialOpen={false}
+				>
+					<BoxControl
+						label="Padding"
+						values={padding}
+						resetValues={{
+							top: "20px",
+							left: "20px",
+							right: "20px",
+							bottom: "20px",
+						}}
+						onChange={onChangePadding}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div
