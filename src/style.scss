@@ -15,6 +15,7 @@
 	&.is-style-drop-cap {
 		p:first-of-type:first-letter {
 			// color: #903;
+			color: var(--drop-cap-color);
 			float: left;
 			font-size: 60px;
 			line-height: 50px;

@@ -27,6 +27,7 @@ export default function save({ attributes }) {
 	const {
 		backgroundColor,
 		textColor,
+		dropCapColor,
 		padding,
 		columnCount,
 		columnWidth,
@@ -35,6 +36,8 @@ export default function save({ attributes }) {
 		columnRuleWidth,
 		columnRuleColor,
 	} = attributes;
+
+	// console.table(attributes);
 
 	return (
 		<div
@@ -52,6 +55,7 @@ export default function save({ attributes }) {
 				columnRuleStyle: columnRuleStyle,
 				columnRuleWidth: columnRuleWidth,
 				columnRuleColor: columnRuleColor,
+				"--drop-cap-color": dropCapColor,
 			}}
 		>
 			<InnerBlocks.Content />

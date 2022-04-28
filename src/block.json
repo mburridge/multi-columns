@@ -15,11 +15,10 @@
   ],
   "supports": {
     "html": false,
-    "spacing_how_does_this_work": {
-      "also": "how to add align wide?",
-      "margin": true,
-      "padding": true
-    }
+    "align": [
+      "wide",
+      "full"
+    ]
   },
   "textdomain": "newspaper-columns-block",
   "editorScript": "file:./index.js",
@@ -80,6 +79,9 @@
     "columnRuleStyle": {
       "type": "string",
       "default": "solid"
+    },
+    "dropCapColor": {
+      "type": "string"
     }
   }
 }

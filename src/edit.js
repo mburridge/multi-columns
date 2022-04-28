@@ -59,6 +59,7 @@ export default function Edit({ attributes, setAttributes }) {
 	const {
 		backgroundColor,
 		textColor,
+		dropCapColor,
 		padding,
 		columnCount,
 		columnWidth,
@@ -73,6 +74,9 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 	const onChangeTextColor = (newTextColor) => {
 		setAttributes({ textColor: newTextColor });
+	};
+	const onChangeDropCapColor = (newDropCapColor) => {
+		setAttributes({ dropCapColor: newDropCapColor });
 	};
 	const onChangePadding = (newPadding) => {
 		console.table(newPadding);
@@ -105,6 +109,8 @@ export default function Edit({ attributes, setAttributes }) {
 		setAttributes({ columnRuleColor: newColumnRuleColor });
 	};
 
+	// const dropCapColor = "#ff0000";
+
 	return (
 		<>
 			<InspectorControls>
@@ -121,6 +127,11 @@ export default function Edit({ attributes, setAttributes }) {
 							value: backgroundColor,
 							onChange: onChangeBackgroundColor,
 							label: __("Background colour", "newspaper-columns-block"),
+						},
+						{
+							value: dropCapColor,
+							onChange: onChangeDropCapColor,
+							label: __("Drop Capital colour", "newspaper-columns-block"),
 						},
 					]}
 				/>
@@ -250,6 +261,7 @@ export default function Edit({ attributes, setAttributes }) {
 					columnRuleStyle: columnRuleStyle,
 					columnRuleWidth: columnRuleWidth,
 					columnRuleColor: columnRuleColor,
+					"--drop-cap-color": dropCapColor,
 				}}
 			>
 				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={NPC_TEMPLATE} />
