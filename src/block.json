@@ -47,6 +47,13 @@
     "textColor": {
       "type": "string"
     },
+    "columnRuleColor": {
+      "type": "string",
+      "default": "#b8b8b8"
+    },
+    "dropCapColor": {
+      "type": "string"
+    },
     "padding": {
       "type": "object",
       "default": {
@@ -68,10 +75,6 @@
       "type": "integer",
       "default": 40
     },
-    "columnRuleColor": {
-      "type": "string",
-      "default": "#b8b8b8"
-    },
     "columnRuleWidth": {
       "type": "integer",
       "default": 1
@@ -80,8 +83,13 @@
       "type": "string",
       "default": "solid"
     },
-    "dropCapColor": {
-      "type": "string"
+    "dropCapSize": {
+      "type": "object",
+      "default": {
+        "size": "small",
+        "fontSize": "3.8rem",
+        "lineHeight": "3.5rem"
+      }
     }
   }
 }

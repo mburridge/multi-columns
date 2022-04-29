@@ -35,6 +35,7 @@ export default function save({ attributes }) {
 		columnRuleStyle,
 		columnRuleWidth,
 		columnRuleColor,
+		dropCapSize,
 	} = attributes;
 
 	// console.table(attributes);
@@ -56,6 +57,8 @@ export default function save({ attributes }) {
 				columnRuleWidth: columnRuleWidth,
 				columnRuleColor: columnRuleColor,
 				"--drop-cap-color": dropCapColor,
+				"--drop-cap-font-size": dropCapSize.fontSize,
+				"--drop-cap-line-height": dropCapSize.lineHeight,
 			}}
 		>
 			<InnerBlocks.Content />

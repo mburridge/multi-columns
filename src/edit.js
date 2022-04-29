@@ -59,6 +59,7 @@ export default function Edit({ attributes, setAttributes }) {
 	const {
 		backgroundColor,
 		textColor,
+		columnRuleColor,
 		dropCapColor,
 		padding,
 		columnCount,
@@ -66,7 +67,7 @@ export default function Edit({ attributes, setAttributes }) {
 		columnGap,
 		columnRuleStyle,
 		columnRuleWidth,
-		columnRuleColor,
+		dropCapSize,
 	} = attributes;
 
 	const onChangeBackgroundColor = (newBackgroundColor) => {
@@ -74,6 +75,9 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 	const onChangeTextColor = (newTextColor) => {
 		setAttributes({ textColor: newTextColor });
+	};
+	const onChangeColumnRuleColor = (newColumnRuleColor) => {
+		setAttributes({ columnRuleColor: newColumnRuleColor });
 	};
 	const onChangeDropCapColor = (newDropCapColor) => {
 		setAttributes({ dropCapColor: newDropCapColor });
@@ -105,11 +109,36 @@ export default function Edit({ attributes, setAttributes }) {
 		newColumnRuleWidth = newColumnRuleWidth < 1 ? 1 : newColumnRuleWidth;
 		setAttributes({ columnRuleWidth: Number(newColumnRuleWidth) });
 	};
-	const onChangeColumnRuleColor = (newColumnRuleColor) => {
-		setAttributes({ columnRuleColor: newColumnRuleColor });
+	const onChangeDropCapSize = (newDropCapSize) => {
+		switch (newDropCapSize) {
+			case "small":
+				setAttributes({
+					dropCapSize: {
+						size: "small",
+						fontSize: "3.8rem",
+						lineHeight: "3.5rem",
+					},
+				});
+				break;
+			case "large":
+				setAttributes({
+					dropCapSize: {
+						size: "large",
+						fontSize: "6.2rem",
+						lineHeight: "5.2rem",
+					},
+				});
+				break;
+			default:
+				setAttributes({
+					dropCapSize: {
+						size: "small",
+						fontSize: "3.8rem",
+						lineHeight: "3.5rem",
+					},
+				});
+		}
 	};
-
-	// const dropCapColor = "#ff0000";
 
 	return (
 		<>
@@ -127,6 +156,11 @@ export default function Edit({ attributes, setAttributes }) {
 							value: backgroundColor,
 							onChange: onChangeBackgroundColor,
 							label: __("Background colour", "newspaper-columns-block"),
+						},
+						{
+							value: columnRuleColor,
+							onChange: onChangeColumnRuleColor,
+							label: __("Separator colour", "newspaper-columns-block"),
 						},
 						{
 							value: dropCapColor,
@@ -191,9 +225,9 @@ export default function Edit({ attributes, setAttributes }) {
 								value={columnRuleStyle}
 								options={[
 									{ label: "None", value: "none" },
+									{ label: "Solid", value: "solid" },
 									{ label: "Dotted", value: "dotted" },
 									{ label: "Dashed", value: "dashed" },
-									{ label: "Solid", value: "solid" },
 									{ label: "Double", value: "double" },
 									{ label: "Groove", value: "groove" },
 									{ label: "Ridge", value: "ridge" },
@@ -210,22 +244,28 @@ export default function Edit({ attributes, setAttributes }) {
 								value={columnRuleWidth}
 								min="1"
 								max="8"
-								width="200px"
 							/>
 						</fieldset>
 					</PanelRow>
+				</PanelBody>
+
+				<PanelBody
+					title={__("Dropped Initial Capital", "newspaper-columns-block")}
+					initialOpen={false}
+				>
 					<PanelRow>
-						<PanelColorSettings
-							title={__("Colour", "newspaper-columns-block")}
-							initialOpen={false}
-							colorSettings={[
-								{
-									value: columnRuleColor,
-									onChange: onChangeColumnRuleColor,
-									label: __("Separator colour", "newspaper-columns-block"),
-								},
-							]}
-						/>
+						<fieldset>
+							<SelectControl
+								label={__("Dropped Capital Size", "newspaper-columns-block")}
+								labelPosition="side"
+								onChange={onChangeDropCapSize}
+								value={dropCapSize.size}
+								options={[
+									{ label: "Small", value: "small" },
+									{ label: "Large", value: "large" },
+								]}
+							/>
+						</fieldset>
 					</PanelRow>
 				</PanelBody>
 
@@ -262,6 +302,8 @@ export default function Edit({ attributes, setAttributes }) {
 					columnRuleWidth: columnRuleWidth,
 					columnRuleColor: columnRuleColor,
 					"--drop-cap-color": dropCapColor,
+					"--drop-cap-font-size": dropCapSize.fontSize,
+					"--drop-cap-line-height": dropCapSize.lineHeight,
 				}}
 			>
 				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={NPC_TEMPLATE} />

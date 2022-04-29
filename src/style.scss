@@ -14,13 +14,11 @@
 
 	&.is-style-drop-cap {
 		p:first-of-type:first-letter {
-			// color: #903;
 			color: var(--drop-cap-color);
 			float: left;
-			font-size: 60px;
-			line-height: 50px;
-			padding-top: 4px;
-			padding-right: 8px;
+			font-size: var(--drop-cap-font-size);
+			line-height: var(--drop-cap-line-height);
+			padding-right: 0.33rem;
 		}
 	}
 }
