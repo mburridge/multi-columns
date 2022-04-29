@@ -42,17 +42,20 @@
       "selector": "div"
     },
     "backgroundColor": {
-      "type": "string"
+      "type": "string",
+      "default": "#fbf9f4"
     },
     "textColor": {
-      "type": "string"
+      "type": "string",
+      "default": "#3a3a3a"
     },
     "columnRuleColor": {
       "type": "string",
       "default": "#b8b8b8"
     },
     "dropCapColor": {
-      "type": "string"
+      "type": "string",
+      "default": "#b8b8b8"
     },
     "padding": {
       "type": "object",
