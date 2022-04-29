@@ -224,13 +224,34 @@ export default function Edit({ attributes, setAttributes }) {
 								onChange={onChangeColumnRuleStyle}
 								value={columnRuleStyle}
 								options={[
-									{ label: "None", value: "none" },
-									{ label: "Solid", value: "solid" },
-									{ label: "Dotted", value: "dotted" },
-									{ label: "Dashed", value: "dashed" },
-									{ label: "Double", value: "double" },
-									{ label: "Groove", value: "groove" },
-									{ label: "Ridge", value: "ridge" },
+									{
+										label: __("None", "newspaper-columns-block"),
+										value: "none",
+									},
+									{
+										label: __("Solid", "newspaper-columns-block"),
+										value: "solid",
+									},
+									{
+										label: __("Dotted", "newspaper-columns-block"),
+										value: "dotted",
+									},
+									{
+										label: __("Dashed", "newspaper-columns-block"),
+										value: "dashed",
+									},
+									{
+										label: __("Double", "newspaper-columns-block"),
+										value: "double",
+									},
+									{
+										label: __("Groove", "newspaper-columns-block"),
+										value: "groove",
+									},
+									{
+										label: __("Ridge", "newspaper-columns-block"),
+										value: "ridge",
+									},
 								]}
 							/>
 						</fieldset>
@@ -261,8 +282,14 @@ export default function Edit({ attributes, setAttributes }) {
 								onChange={onChangeDropCapSize}
 								value={dropCapSize.size}
 								options={[
-									{ label: "Small", value: "small" },
-									{ label: "Large", value: "large" },
+									{
+										label: __("Small", "newspaper-columns-block"),
+										value: "small",
+									},
+									{
+										label: __("Large", "newspaper-columns-block"),
+										value: "large",
+									},
 								]}
 							/>
 						</fieldset>
