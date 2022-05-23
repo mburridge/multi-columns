@@ -57,13 +57,9 @@ export default function Edit({ attributes, setAttributes }) {
 	];
 	const ALLOWED_BLOCKS = ["core/image", "core/paragraph", "core/heading"];
 
-	const blockProps = useBlockProps();
 	const {
-		backgroundColor,
-		textColor,
 		columnRuleColor,
 		dropCapColor,
-		padding,
 		columnCount,
 		columnWidth,
 		columnGap,
@@ -72,12 +68,20 @@ export default function Edit({ attributes, setAttributes }) {
 		dropCapSize,
 	} = attributes;
 
-	const onChangeBackgroundColor = (newBackgroundColor) => {
-		setAttributes({ backgroundColor: newBackgroundColor });
+	const columnStyles = {
+		columnCount: columnCount,
+		columnWidth: columnWidth,
+		columnGap: columnGap,
+		columnRuleStyle: columnRuleStyle,
+		columnRuleWidth: columnRuleWidth,
+		columnRuleColor: columnRuleColor,
+		"--drop-cap-color": dropCapColor,
+		"--drop-cap-font-size": dropCapSize.fontSize,
+		"--drop-cap-line-height": dropCapSize.lineHeight,
 	};
-	const onChangeTextColor = (newTextColor) => {
-		setAttributes({ textColor: newTextColor });
-	};
+
+	const blockProps = useBlockProps({ style: columnStyles });
+
 	const onChangeColumnRuleColor = (newColumnRuleColor) => {
 		setAttributes({ columnRuleColor: newColumnRuleColor });
 	};
@@ -149,16 +153,6 @@ export default function Edit({ attributes, setAttributes }) {
 					title={__("Colour settings", "newspaper-columns-block")}
 					initialOpen={false}
 					colorSettings={[
-						{
-							value: textColor,
-							onChange: onChangeTextColor,
-							label: __("Text colour", "newspaper-columns-block"),
-						},
-						{
-							value: backgroundColor,
-							onChange: onChangeBackgroundColor,
-							label: __("Background colour", "newspaper-columns-block"),
-						},
 						{
 							value: columnRuleColor,
 							onChange: onChangeColumnRuleColor,
@@ -297,44 +291,8 @@ export default function Edit({ attributes, setAttributes }) {
 						</fieldset>
 					</PanelRow>
 				</PanelBody>
-
-				<PanelBody
-					title={__("Dimensions", "newspaper-columns-block")}
-					initialOpen={false}
-				>
-					<BoxControl
-						label="Padding"
-						values={padding}
-						resetValues={{
-							top: "20px",
-							left: "20px",
-							right: "20px",
-							bottom: "20px",
-						}}
-						onChange={onChangePadding}
-					/>
-				</PanelBody>
 			</InspectorControls>
-			<div
-				{...blockProps}
-				style={{
-					backgroundColor: backgroundColor,
-					color: textColor,
-					paddingTop: padding.top,
-					paddingRight: padding.right,
-					paddingBottom: padding.bottom,
-					paddingLeft: padding.left,
-					columnCount: columnCount,
-					columnWidth: columnWidth,
-					columnGap: columnGap,
-					columnRuleStyle: columnRuleStyle,
-					columnRuleWidth: columnRuleWidth,
-					columnRuleColor: columnRuleColor,
-					"--drop-cap-color": dropCapColor,
-					"--drop-cap-font-size": dropCapSize.fontSize,
-					"--drop-cap-line-height": dropCapSize.lineHeight,
-				}}
-			>
+			<div {...blockProps}>
 				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={NPC_TEMPLATE} />
 			</div>
 		</>

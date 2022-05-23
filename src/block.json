@@ -14,11 +14,17 @@
     "text"
   ],
   "supports": {
-    "html": false,
+    "color": {
+      "link": true
+    },
     "align": [
       "wide",
       "full"
-    ]
+    ],
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
   },
   "textdomain": "newspaper-columns-block",
   "editorScript": "file:./index.js",
@@ -41,13 +47,29 @@
       "source": "html",
       "selector": "div"
     },
-    "backgroundColor": {
-      "type": "string",
-      "default": "#fbf9f4"
-    },
-    "textColor": {
-      "type": "string",
-      "default": "#3a3a3a"
+    "style": {
+      "type": "object",
+      "default": {
+        "color": {
+          "text": "#3a3a3a",
+          "background": "#fbf9f4"
+        },
+        "elements": {
+          "link": {
+            "color": {
+              "text": "#0000cc"
+            }
+          }
+        },
+        "spacing": {
+          "padding": {
+            "top": "20px",
+            "right": "20px",
+            "bottom": "20px",
+            "left": "20px"
+          }
+        }
+      }
     },
     "columnRuleColor": {
       "type": "string",
@@ -56,15 +78,6 @@
     "dropCapColor": {
       "type": "string",
       "default": "#b8b8b8"
-    },
-    "padding": {
-      "type": "object",
-      "default": {
-        "top": "20px",
-        "left": "20px",
-        "right": "20px",
-        "bottom": "20px"
-      }
     },
     "columnCount": {
       "type": "integer",

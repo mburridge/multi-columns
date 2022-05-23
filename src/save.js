@@ -23,12 +23,8 @@ import { useBlockProps, InnerBlocks } from "@wordpress/block-editor";
  * @return {WPElement} Element to render.
  */
 export default function save({ attributes }) {
-	const blockProps = useBlockProps.save();
 	const {
-		backgroundColor,
-		textColor,
 		dropCapColor,
-		padding,
 		columnCount,
 		columnWidth,
 		columnGap,
@@ -38,29 +34,22 @@ export default function save({ attributes }) {
 		dropCapSize,
 	} = attributes;
 
-	// console.table(attributes);
+	const columnStyles = {
+		columnCount: columnCount,
+		columnWidth: columnWidth,
+		columnGap: columnGap,
+		columnRuleStyle: columnRuleStyle,
+		columnRuleWidth: columnRuleWidth,
+		columnRuleColor: columnRuleColor,
+		"--drop-cap-color": dropCapColor,
+		"--drop-cap-font-size": dropCapSize.fontSize,
+		"--drop-cap-line-height": dropCapSize.lineHeight,
+	};
+
+	const blockProps = useBlockProps.save({ style: columnStyles });
 
 	return (
-		<div
-			{...blockProps}
-			style={{
-				backgroundColor: backgroundColor,
-				color: textColor,
-				paddingTop: padding.top,
-				paddingRight: padding.right,
-				paddingBottom: padding.bottom,
-				paddingLeft: padding.left,
-				columnCount: columnCount,
-				columnWidth: columnWidth,
-				columnGap: columnGap,
-				columnRuleStyle: columnRuleStyle,
-				columnRuleWidth: columnRuleWidth,
-				columnRuleColor: columnRuleColor,
-				"--drop-cap-color": dropCapColor,
-				"--drop-cap-font-size": dropCapSize.fontSize,
-				"--drop-cap-line-height": dropCapSize.lineHeight,
-			}}
-		>
+		<div {...blockProps}>
 			<InnerBlocks.Content />
 		</div>
 	);
