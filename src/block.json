@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 2,
-  "name": "newspaper-columns-block/newspaper-columns-block",
+  "name": "multi-columns/multi-columns",
   "version": "0.1.0",
-  "title": "Newspaper Columns Block",
+  "title": "Multi-columns",
   "category": "design",
   "icon": "columns",
   "description": "Implements a block that allows text to wrap across 2 or more columns - like a newspaper",
@@ -26,7 +26,7 @@
       "padding": true
     }
   },
-  "textdomain": "newspaper-columns-block",
+  "textdomain": "multi-columns",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",

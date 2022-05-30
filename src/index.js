@@ -25,7 +25,7 @@ import save from "./save";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType("newspaper-columns-block/newspaper-columns-block", {
+registerBlockType("multi-columns/multi-columns", {
 	example: {
 		attributes: {
 			columnCount: 2,

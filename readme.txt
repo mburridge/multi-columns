@@ -1,4 +1,4 @@
-=== Newspaper Columns Block ===
+=== Multi-columns Block ===
 Contributors:      Michael Burridge
 Tags:              block
 Tested up to:      5.9
@@ -21,7 +21,7 @@ This section describes how to install the plugin and get it working.
 
 e.g.
 
-1. Upload the plugin files to the `/wp-content/plugins/newspaper-columns-block` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/multi-columns` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 

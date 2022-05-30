@@ -151,45 +151,33 @@ export default function Edit({ attributes, setAttributes }) {
 					{
 						value: columnRuleColor,
 						onChange: onChangeColumnRuleColor,
-						label: __("Separator colour", "newspaper-columns-block"),
+						label: __("Separator colour", "multi-columns"),
 					},
 					{
 						value: dropCapColor,
 						onChange: onChangeDropCapColor,
-						label: __("Drop Capital colour", "newspaper-columns-block"),
+						label: __("Drop Capital colour", "multi-columns"),
 					},
 			  ]
 			: [
 					{
 						value: columnRuleColor,
 						onChange: onChangeColumnRuleColor,
-						label: __("Separator colour", "newspaper-columns-block"),
+						label: __("Separator colour", "multi-columns"),
 					},
 			  ];
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelColorSettings
-					title={__("Colour settings", "newspaper-columns-block")}
-					initialOpen={false}
-					colorSettings={colorSettingsDropDown}
-				/>
-
 				<PanelBody
-					title={__("Column Settings", "newspaper-columns-block")}
+					title={__("Column Settings", "multi-columns")}
 					initialOpen={true}
 				>
 					<PanelRow>
 						<fieldset>
-							<NumberControlTest
-								onChange={onChangeColumnCount}
-								value={columnCount}
-								min="2"
-								max="6"
-							/>
 							<NumberControl
-								label={__("No. of columns", "newspaper-columns-block")}
+								label={__("No. of columns", "multi-columns")}
 								labelPosition="side"
 								onChange={onChangeColumnCount}
 								value={columnCount}
@@ -201,7 +189,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<NumberControl
-								label={__("Width", "newspaper-columns-block")}
+								label={__("Width", "multi-columns")}
 								labelPosition="side"
 								onChange={onChangeColumnWidth}
 								value={columnWidth}
@@ -213,7 +201,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<NumberControl
-								label={__("Gap", "newspaper-columns-block")}
+								label={__("Gap", "multi-columns")}
 								labelPosition="side"
 								onChange={onChangeColumnGap}
 								value={columnGap}
@@ -225,43 +213,43 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 
 				<PanelBody
-					title={__("Column Separator", "newspaper-columns-block")}
+					title={__("Column Separator", "multi-columns")}
 					initialOpen={false}
 				>
 					<PanelRow>
 						<fieldset>
 							<SelectControl
-								label={__("Separator Style", "newspaper-columns-block")}
+								label={__("Separator Style", "multi-columns")}
 								labelPosition="side"
 								onChange={onChangeColumnRuleStyle}
 								value={columnRuleStyle}
 								options={[
 									{
-										label: __("None", "newspaper-columns-block"),
+										label: __("None", "multi-columns"),
 										value: "none",
 									},
 									{
-										label: __("Solid", "newspaper-columns-block"),
+										label: __("Solid", "multi-columns"),
 										value: "solid",
 									},
 									{
-										label: __("Dotted", "newspaper-columns-block"),
+										label: __("Dotted", "multi-columns"),
 										value: "dotted",
 									},
 									{
-										label: __("Dashed", "newspaper-columns-block"),
+										label: __("Dashed", "multi-columns"),
 										value: "dashed",
 									},
 									{
-										label: __("Double", "newspaper-columns-block"),
+										label: __("Double", "multi-columns"),
 										value: "double",
 									},
 									{
-										label: __("Groove", "newspaper-columns-block"),
+										label: __("Groove", "multi-columns"),
 										value: "groove",
 									},
 									{
-										label: __("Ridge", "newspaper-columns-block"),
+										label: __("Ridge", "multi-columns"),
 										value: "ridge",
 									},
 								]}
@@ -271,7 +259,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<PanelRow>
 						<fieldset>
 							<NumberControl
-								label={__("Width", "newspaper-columns-block")}
+								label={__("Width", "multi-columns")}
 								labelPosition="side"
 								onChange={onChangeColumnRuleWidth}
 								value={columnRuleWidth}
@@ -284,23 +272,23 @@ export default function Edit({ attributes, setAttributes }) {
 
 				{attributes.className === "is-style-drop-cap" && (
 					<PanelBody
-						title={__("Dropped Initial Capital", "newspaper-columns-block")}
+						title={__("Dropped Initial Capital", "multi-columns")}
 						initialOpen={false}
 					>
 						<PanelRow>
 							<fieldset>
 								<SelectControl
-									label={__("Dropped Capital Size", "newspaper-columns-block")}
+									label={__("Dropped Capital Size", "multi-columns")}
 									labelPosition="side"
 									onChange={onChangeDropCapSize}
 									value={dropCapSize.size}
 									options={[
 										{
-											label: __("Small", "newspaper-columns-block"),
+											label: __("Small", "multi-columns"),
 											value: "small",
 										},
 										{
-											label: __("Large", "newspaper-columns-block"),
+											label: __("Large", "multi-columns"),
 											value: "large",
 										},
 									]}
@@ -309,6 +297,11 @@ export default function Edit({ attributes, setAttributes }) {
 						</PanelRow>
 					</PanelBody>
 				)}
+				<PanelColorSettings
+					title={__("Colour settings", "multi-columns")}
+					initialOpen={false}
+					colorSettings={colorSettingsDropDown}
+				/>
 			</InspectorControls>
 			<div {...blockProps}>
 				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} template={NPC_TEMPLATE} />
